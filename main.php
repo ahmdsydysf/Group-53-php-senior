@@ -101,27 +101,27 @@
 // // print_r($isConnected);
 // // print_r($isOffline);
 
-echo true ;
-echo false ;// empty string
+// echo true ;
+// echo false ;// empty string
 
-$test = null;
+// $test = null;
 
-// falsy values   false , 0 -0  0.0  -0.0  null  []  '0'   ''
+// // falsy values   false , 0 -0  0.0  -0.0  null  []  '0'   ''
 
-if($test == true) {
-    echo "this is truthy value";
-} else {
-    echo "this is falsy value";
-}
+// if($test == true) {
+//     echo "this is truthy value";
+// } else {
+//     echo "this is falsy value";
+// }
 
-echo PHP_INT_MIN;
-echo PHP_INT_MIN;
-echo PHP_INT_MIN;
+// echo PHP_INT_MIN;
+// echo PHP_INT_MIN;
+// echo PHP_INT_MIN;
 
-echo PHP_INT_MAX;
-echo PHP_INT_MIN;
-echo PHP_INT_MIN;
-echo PHP_INT_MIN;
+// echo PHP_INT_MAX;
+// echo PHP_INT_MIN;
+// echo PHP_INT_MIN;
+// echo PHP_INT_MIN;
 
 
 ?>
