@@ -519,6 +519,96 @@ $finalResult = 89 ;
 //     $x++;
 // }
 
+// $txt = 'ahmed sayed';
+
+$arr = ['a' , 'b' , 'c' , 'd'];
+
+$arrLength = count($arr);// 4
+
+for($i = 0  ; $i < $arrLength ; $i++ , print $i) {
+    echo "<h1> char is $arr[$i] </h1>";
+}
+
+// $progLangs = ['lang1' => 'java' ,  1 ,'lang2' => 'c' , 100 , 'php'];
+
+// foreach($progLangs as $key => $lang) {
+
+//     echo "<h1> $lang and his indx is $key </h1>";
+
+// }
+
+$user = [
+  'name'   => 'ahmed sayed' ,
+  'email'  => 'ahmed@gmail.com',
+  'skills' => ['js' , 'css' , 'html']
+];
+// is_array($value) =  true
+// foreach($user as $k => $value) {
+//     if($k == 'skills') {
+//         foreach($value as $x) {
+//             echo "<h4> $language </h4>";
+//         }
+//     } else {
+//         echo "<h1> $value </h1>";
+//     }
+
+//     echo "abdelrahman";
+// }
+// $user = [
+//   'name'   => 'ahmed sayed' ,
+//   'email'  => 'ahmed@gmail.com',
+//   'skills' => ['js' , 'css' , 'html']
+// ];
+// foreach($user as $k => $value) {
+//     if(is_array($value)) {
+
+//         foreach($value as $language) {
+//             echo "<h4> $language </h4>";
+//         }
+
+//     } else {
+
+//         echo "<h1> $value </h1>";
+
+//     }
+
+//     echo "abdelrahman";
+// }
+
+
+// $todayIS = 'mon' ;
+
+// switch($todayIS) {
+//     case 'fri':
+//     case 'sat':
+//         echo "Day Off";
+//         break;
+
+//     case 'sun':
+//     case 'mon':
+//     case 'tue':
+//     case 'wed':
+//     case 'thu':
+//         echo "w.Day";
+//         break;
+
+//     default:
+//         echo " plz check day format";
+// }
+
+$todayNum = '1';
+
+// match use ===   but switch use ==
+
+$result = match($todayNum) {
+    0 , 1 => 'dayOff',
+    2 ,3 , 4 , 5 => 'working Days',
+    default => 'plz check inserted value'
+};
+
+echo $result;
+// include  &   require
+// include_once    require_once
 ?>
 
 <!DOCTYPE html>
@@ -531,10 +621,6 @@ $finalResult = 89 ;
 </head>
 <body>
 
-<?php for($i = 0 , print $i ; $i <= 5 ; $i++): ?>
 
-  <h1> ahmed sayed <?= $i ?> </h1>
-
-<?php endfor ?>
 </body>
 </html>
