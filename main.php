@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 // $myname = "ahmed20";
 // $var2 = "55";
 
@@ -8,8 +9,8 @@
 
 //cs
 
-// $myName = 'ahmed sayed';
-// $myNamE = 'ahmed sayed2';
+$myName = 'ahmed sayed';
+$myNamE = 'ahmed sayed2';
 
 
 // php   loosely typed lang
@@ -429,7 +430,7 @@
 // $y = ['a' => 1 , 'b' => '2'];
 
 // var_dump($x === $y);
-$databaseName = 'Souq' ;
+// $databaseName = 'Souq' ;
 // if($databaseName == 'Souq' && 'ahmed' === 'ahmed' || true == false) {
 //     echo "ahmed";
 // }
@@ -448,7 +449,7 @@ $databaseName = 'Souq' ;
 
 // }
 
-$finalResult = 89 ;
+// $finalResult = 89 ;
 
 // if($finalResult >= 90) {
 //     echo '<h1> A </h1>';
@@ -521,13 +522,13 @@ $finalResult = 89 ;
 
 // $txt = 'ahmed sayed';
 
-$arr = ['a' , 'b' , 'c' , 'd'];
+// $arr = ['a' , 'b' , 'c' , 'd'];
 
-$arrLength = count($arr);// 4
+// $arrLength = count($arr);// 4
 
-for($i = 0  ; $i < $arrLength ; $i++ , print $i) {
-    echo "<h1> char is $arr[$i] </h1>";
-}
+// for($i = 0  ; $i < $arrLength ; $i++ , print $i) {
+//     echo "<h1> char is $arr[$i] </h1>";
+// }
 
 // $progLangs = ['lang1' => 'java' ,  1 ,'lang2' => 'c' , 100 , 'php'];
 
@@ -537,11 +538,11 @@ for($i = 0  ; $i < $arrLength ; $i++ , print $i) {
 
 // }
 
-$user = [
-  'name'   => 'ahmed sayed' ,
-  'email'  => 'ahmed@gmail.com',
-  'skills' => ['js' , 'css' , 'html']
-];
+// $user = [
+//   'name'   => 'ahmed sayed' ,
+//   'email'  => 'ahmed@gmail.com',
+//   'skills' => ['js' , 'css' , 'html']
+// ];
 // is_array($value) =  true
 // foreach($user as $k => $value) {
 //     if($k == 'skills') {
@@ -596,31 +597,16 @@ $user = [
 //         echo " plz check day format";
 // }
 
-$todayNum = '1';
+// $todayNum = '1';
 
-// match use ===   but switch use ==
+// // match use ===   but switch use ==
 
-$result = match($todayNum) {
-    0 , 1 => 'dayOff',
-    2 ,3 , 4 , 5 => 'working Days',
-    default => 'plz check inserted value'
-};
+// $result = match($todayNum) {
+//     0 , 1 => 'dayOff',
+//     2 ,3 , 4 , 5 => 'working Days',
+//     default => 'plz check inserted value'
+// };
 
-echo $result;
+// echo $result;
 // include  &   require
 // include_once    require_once
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
-<body>
-
-
-</body>
-</html>
