@@ -1,14 +1,6 @@
 --------------------------------
 
-login.php => (form -> 2inputs)
-
-index.php (echo username )
-
-handle.php => (check on login data and compare with $user data array , redirect to index if data is true and if false redirect to login page and echo error msg )
-
-$users = [
-    ['username' => 'mohamed' , 'password' => 5050],
-    ['username' => 'ahmed' , 'password' => 7895],
-    ['username' => 'ahmedSayed' , 'password' => 1010],
-    ['username' => 'marawan' , 'password' => 9632],
-];
+make 3 inputs 
+1- username with validation
+2- password with validation
+3- email with validation (must end with .com and must be @yahoo or @gmail or @hotmail)
