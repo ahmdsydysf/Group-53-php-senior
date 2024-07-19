@@ -67,15 +67,40 @@
 var_dump($_POST);
 var_dump($_FILES);
 
-$myImage = $_FILES['myImage']; // array
+if($_FILES['myImage'] && $_FILES['myImage']['error'] != 4){
+    $all_errors = [];
 
-$fileName = uniqid() . $myImage['name'];
-$filesize = $myImage['size'];
-$fileError = $myImage['error'];
-$filePath = $myImage['tmp_name'];
+    $myImage = $_FILES['myImage'];
+    $fileName = uniqid() . $myImage['name'];
+    $filesize = $myImage['size'];
+    $filePath = $myImage['tmp_name'];
+
+    $allowed_ext = ['png','jpg','jpeg'];
+
+    $file_ext = explode('.', $fileName);// return array
+    $final_ext_in_array = end($file_ext);// Png   png
+    $final_ext = strtolower($final_ext_in_array);// gif
+
+    if(! in_array($final_ext, $allowed_ext)){
+        $all_errors['ext_type'] = "plz make sure your file type is 'png' , 'jpg' , 'jpeg'";
+    }
+
+    if($filesize > 2097152){
+        $all_errors['file_size'] = "plz make sure your file size lower than 2 mega";
+    }
+
+    if(empty($all_errors)){
+        move_uploaded_file($filePath  , 'uploads/' . $fileName);
+    }else{
+        foreach($all_errors as $k => $error){
+            echo $k . $error ;
+        }
+    }
+}
 
 
-move_uploaded_file($filePath  , 'uploads/' .$fileName );
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
