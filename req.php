@@ -34,8 +34,9 @@ if(isset($_POST['username'])){
   $stat = "INSERT INTO users (username , password , email)  VALUES  ('$un' , '$pw' , '$em')";
 
 
-    mysqli_query($connection  ,   $stat);   
-    header('location:login.php');
+  mysqli_query($connection  ,   $stat);  
+
+  header('location:login.php');
   }
 }
 

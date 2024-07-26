@@ -1,3 +1,43 @@
+<?php 
+$flag = 0;
+$allerrors = [];
+var_dump($_SERVER);
+if(isset($_POST['username'])){
+// if(isset($_POST['username'])){
+
+  $un = $_POST['username'];
+  $pw = $_POST['password'];
+
+  if(!empty($un)){
+    if(strlen($un) > 3){
+      if(preg_match('/^senior/' , $un)){
+        $flag++;
+      }else{
+        $allerrors['reg'] = 'u must start un with senior';
+      }
+    }else{
+      $allerrors['len'] = 'u must length > 3 ';
+    }
+  }else{
+    $allerrors['empty'] = 'u must enter un';
+  }
+
+
+  if($flag == 1){
+
+    // 1-  connect
+    // 2- statment
+    // 3- excute
+
+
+  }
+}
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +46,17 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>  loooogin  </h1>
+  <h1>login</h1>
+  <?php if(! empty($allerrors)) : ?>
+    <?php foreach($allerrors as $error) : ?>
+      <?= $error ?>
+    <?php endforeach; ?>
+  <?php endif ?>
+      <form action=""  method="post" >
+        <input type="text" name="username" placeholder="name">
+        <input type="text" name="password" placeholder="password">
+
+        <button>submit</button>
+      </form>
 </body>
 </html>
