@@ -1,0 +1,18 @@
+CRUD
+create(insert)   read(select)   update   delete
+
+R => select 
+
+SELECT  اسم الاعمده  FROM  اسم الجدول
+select * from emps
+select username , email , password from emps
+
+
+C => insert
+INSERT INTO اسم الجدول
+    ( عمود1الاسم , عمود2الباسوورد ) values  ( احمد , 123)
+
+U => update
+update اسم الجدول
+set col_name='new value' , col_name='new value' 
+where  id = 100;
