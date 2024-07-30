@@ -29,7 +29,7 @@ if(isset($_POST['username'])){
     // 2- statment
     // 3- excute
 
-  $connection =  mysqli_connect('localhost' , 'root' , '' , 'test_gr_53');
+    require_once "help.php";
 
   $stat = "INSERT INTO users (username , password , email)  VALUES  ('$un' , '$pw' , '$em')";
 
