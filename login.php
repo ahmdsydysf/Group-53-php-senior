@@ -1,10 +1,23 @@
 <?php 
 session_start();
+require_once "help.php";
+$statment2 = 'SELECT email FROM users WHERE email = "admin2@web.com"';
+$query = mysqli_query($connection  ,   $statment2); 
+
+if($query->num_rows == 0){
+
+  $statment3 = "INSERT INTO users (username , password , email)  
+                VALUES  ('admin2' , 'Admin123' , 'admin2@web.com')";
+
+  mysqli_query($connection  ,   $statment3);  
+}
+
+
 $flag = 0;
 $flag2 = 0;
 $allerrors = [];
 
-var_dump($_SESSION);
+// var_dump($_SESSION);
 // var_dump($_SERVER);
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 // if(isset($_POST['username'])){
@@ -28,7 +41,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 
   if($flag == 1){
-      require_once "help.php";
+  
     // 1-  connect
     $statment = 'SELECT * FROM users';
     // 2- statment
@@ -53,8 +66,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $_SESSION['login_user_email'] = $user['email'];
             $_SESSION['login_user_password'] = $user['password'];
           // $_SESSION['user_name'] = $un;
+          if($un == 'admin'){
+
+            header('location:dash/index.php');
+          }else{
 
             header('location:index.php');
+          }
 
           }else{
             $flag2 = 1 ;
