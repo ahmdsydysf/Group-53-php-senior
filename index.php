@@ -50,10 +50,10 @@ session_start();
 					    </div>
 					    <div class="col-md pr-4 d-flex topper align-items-center">
 					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-						    <span class="text"><?= $_SESSION['login_user']?? 'plz login' ?></span>
+						    <span class="text"><?= $_SESSION['login_user'] ?? 'plz login' ?></span>
 					    </div>
 					    <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
-						    <span class="text"><?= $_SESSION['login_user_id']?? 'id' ?></span>
+						    <span class="text"><?= $_SESSION['login_user_id'] ?? 'id' ?></span>
 					    </div>
 				    </div>
 			    </div>
