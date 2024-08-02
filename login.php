@@ -27,11 +27,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
   if(!empty($un)){
     if(strlen($un) > 3){
-      if(preg_match('/^senior/' , $un)){
-        $flag++;
-      }else{
-        $allerrors['reg'] = 'u must start un with senior';
-      }
+      // if(preg_match('/^senior/' , $un)){
+      //   $flag++;
+      // }else{
+      //   $allerrors['reg'] = 'u must start un with senior';
+      // }
+      $flag++;
     }else{
       $allerrors['len'] = 'u must length > 3 ';
     }
@@ -66,11 +67,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $_SESSION['login_user_email'] = $user['email'];
             $_SESSION['login_user_password'] = $user['password'];
           // $_SESSION['user_name'] = $un;
-          if($un == 'admin'){
-
+          if($un == 'admin2' || $un == 'admin'){
             header('location:dash/index.php');
           }else{
-
             header('location:index.php');
           }
 
