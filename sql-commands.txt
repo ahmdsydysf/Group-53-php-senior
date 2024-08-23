@@ -17,3 +17,20 @@ update اسم الجدول
 set col_name='new value' , col_name='new value' 
 where  id = 100;
 
+SELECT first_name , email FROM employees ORDER BY first_name DESC;من الكبير الي الصغير
+
+SELECT first_name , email FROM employees ORDER BY first_name ASC;من القليل الي الكثير
+
+SELECT concat(first_name , ' ' , last_name) AS full_name , email , salary , salary / 13 AS UAE_Salary 
+FROM employees ORDER BY employee_id ASC; 
+
+SELECT * FROM employees WHERE salary > 5000 = 50 ; 
+
+SELECT * FROM employees WHERE department_id = 50 AND department_id = 100; 
+SELECT * FROM employees WHERE department_id in (50 , 100); 
+SELECT * FROM employees WHERE department_id NOT IN (50 , 100); 
+
+SELECT * FROM employees WHERE salary >= 3000 AND salary <= 5000; 
+SELECT * FROM employees WHERE salary BETWEEN 3000 AND 5000; 
+SELECT * FROM employees WHERE salary NOT BETWEEN 3000 AND 5000; 
+
