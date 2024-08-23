@@ -16,3 +16,4 @@ U => update
 update اسم الجدول
 set col_name='new value' , col_name='new value' 
 where  id = 100;
+
