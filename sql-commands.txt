@@ -24,7 +24,7 @@ SELECT first_name , email FROM employees ORDER BY first_name ASC;من القلي
 SELECT concat(first_name , ' ' , last_name) AS full_name , email , salary , salary / 13 AS UAE_Salary 
 FROM employees ORDER BY employee_id ASC; 
 
-SELECT * FROM employees WHERE salary > 5000 = 50 ; 
+SELECT * FROM employees WHERE salary > 5000; 
 
 SELECT * FROM employees WHERE department_id = 50 AND department_id = 100; 
 SELECT * FROM employees WHERE department_id in (50 , 100); 
@@ -34,3 +34,29 @@ SELECT * FROM employees WHERE salary >= 3000 AND salary <= 5000;
 SELECT * FROM employees WHERE salary BETWEEN 3000 AND 5000; 
 SELECT * FROM employees WHERE salary NOT BETWEEN 3000 AND 5000; 
 
+SELECT * FROM employees WHERE first_name LIKE '%e';
+SELECT * FROM employees WHERE first_name LIKE '%e%';
+SELECT * FROM employees WHERE first_name LIKE 'e%';
+SELECT * FROM employees WHERE first_name LIKE 'a%e';
+SELECT * FROM employees WHERE first_name LIKE '%e_';
+SELECT * FROM employees WHERE first_name LIKE '%e%e%'; 
+
+SELECT * FROM employees WHERE manager_id is null; can't use = NULL
+SELECT * FROM employees WHERE manager_id is Not null; 
+
+--substr using length not index start with 1 not 0
+SELECT first_name , substr(first_name , 2 , 4) AS sub24 , UPPER(last_name) AS capital , LOWER(first_name) , LENGTH(first_name) , substr(first_name , 2) , REPLACE(first_name , 'u' , '@') , INSTR(first_name , 'u') FROM employees; 
+
+-- TRIM
+SELECT last_name , TRIM(last_name) FROM employees; 
+SELECT last_name , TRIM(LEADING FROM last_name) FROM employees; 
+SELECT last_name , TRIM(TRALLING FROM last_name) FROM employees; 
+SELECT last_name , TRIM(BOTH FROM last_name) FROM employees; 
+SELECT last_name , TRIM('@' FROM last_name) FROM employees; only in the start od string
+SELECT salary , ceil(salary) FROM employees; 
+SELECT salary , floor(salary) FROM employees; 
+SELECT salary , round(salary) FROM employees; 
+SELECT salary , truncate(salary , 1) FROM employees; 
+SELECT salary , truncate(salary , 0) FROM employees; 
+SELECT salary , pow(salary , 2) FROM employees; 
+SELECT salary , MOD(salary , 3) FROM employees; 
