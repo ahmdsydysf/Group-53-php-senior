@@ -60,3 +60,82 @@ SELECT salary , truncate(salary , 1) FROM employees;
 SELECT salary , truncate(salary , 0) FROM employees; 
 SELECT salary , pow(salary , 2) FROM employees; 
 SELECT salary , MOD(salary , 3) FROM employees; 
+
+SELECT CURTIME();
+SELECT CURRENT_TIME();
+SELECT CURRENT_TIME;
+
+SELECT CURDATE();
+SELECT CURRENT_DATE();
+SELECT CURRENT_DATE;
+
+SELECT NOW();
+SELECT CURRENT_TIMESTAMP();
+SELECT CURRENT_TIMESTAMP;
+
+SELECT DAYNAME(CURDATE());
+SELECT DAYNAME('2024-08-30');
+SELECT DAYOFMONTH('2024-08-30');
+SELECT DAYOFWEEK('2024-08-30'); 
+SELECT DAYOFYEAR('2024-08-30'); 
+
+SELECT MONTH(CURDATE());
+SELECT MONTHNAME(CURDATE()); 
+
+SELECT HOUR(CURRENT_TIMESTAMP); 
+SELECT MINUTES(CURRENT_TIMESTAMP); 
+
+SELECT DATEDIFF(CURRENT_DATE , '1989-11-12'); 
+SELECT DATEDIFF(CURRENT_DATE , '1989-11-12') / 365;
+SELECT FLOOR(DATEDIFF(CURRENT_DATE , '1989-11-12') / 365);// 34
+SELECT DAYNAME(LAST_DAY('2024-08-30')); 
+
+SELECT hire_date , DATEDIFF(CURRENT_DATE , hire_date)/365 FROM employees WHERE employee_id = 100; 
+
+SELECT hire_date , DATEDIFF(CURRENT_DATE , hire_date) , DATE_ADD(hire_date , INTERVAL 10 DAY) FROM employees WHERE employee_id = 100;
+SELECT hire_date , DATEDIFF(CURRENT_DATE , hire_date) , DATE_ADD(hire_date , INTERVAL 10 HOUR) FROM employees WHERE employee_id = 100;
+SELECT hire_date , DATEDIFF(CURRENT_DATE , hire_date) , DATE_ADD(hire_date , INTERVAL 10 MINUTE) FROM employees WHERE employee_id = 100;
+SELECT hire_date , DATEDIFF(CURRENT_DATE , hire_date) , DATE_ADD(hire_date , INTERVAL 10 MONTH) FROM employees WHERE employee_id = 100;
+SELECT hire_date , DATEDIFF(CURRENT_DATE , hire_date) , DATE_ADD(hire_date , INTERVAL 10 WEEK) FROM employees WHERE employee_id = 100;
+SELECT hire_date , DATEDIFF(CURRENT_DATE , hire_date) , DATE_ADD(hire_date , INTERVAL 10 QUARTER) FROM employees WHERE employee_id = 100;
+SELECT hire_date , DATEDIFF(CURRENT_DATE , hire_date) , DATE_ADD(hire_date , INTERVAL 10 YEAR) FROM employees WHERE employee_id = 100;
+
+SELECT hire_date , DATEDIFF(CURRENT_DATE , hire_date) , DATE_SUB(hire_date , INTERVAL 10 YEAR) FROM employees WHERE employee_id = 100;
+
+select date_format('2017-06-05' , '%Y'); 
+select date_format('2017-06-05' , '%a'); 
+select date_format('2017-06-05' , '%D'); 
+select date_format('2017-06-05' , '%M'); 
+select date_format('2017-06-05 15:13:55' , '%h'); 
+select date_format('2017-06-05 15:13:55' , '%H'); 
+select date_format('2017-06-05 15:13:55' , '%r'); 
+select date_format('2017-06-05 15:13:55' , '%W %M %e %Y'); 
+
+SELECT first_name , hire_date FROM `employees` where hire_date BETWEEN '2002-01-01' AND '2006-01-01'; 
+SELECT first_name , employee_id , salary , salary +  ifnull(commission_pct , 0)  FROM `employees`;
+SELECT employee_id , first_name , gender , if(gender = 0 , 'MALE' , 'FEMALE') FROM `employees`;
+
+SELECT COUNT(manager_id) FROM employees; 
+SELECT COUNT(id) FROM employees; 
+SELECT COUNT(*) FROM employees; 
+
+SELECT sum(salary) , department_id FROM employees GROUP BY department_id; 
+SELECT sum(salary) , department_id FROM employees WHERE department_id is not null GROUP BY department_id; 
+
+SELECT count(employee_id) , gender FROM `employees` GROUP BY gender;
+
+SELECT count(employee_id) , gender , case gender WHEN '0' THEN 'MALE' WHEN '1' THEN 'FEMALE' ELSE 'Not Defined' END AS GenderName FROM `employees` GROUP BY gender; 
+SELECT count(employee_id) , gender , job_id , case gender WHEN '0' THEN 'MALE' WHEN '1' THEN 'FEMALE' ELSE 'Not Defined' END AS GenderName FROM `employees` GROUP BY gender , job_id; 
+
+SELECT employees.first_name , employee_id , departments.department_id , department_name FROM `employees` , departments;
+
+SELECT first_name , employee_id , employees.department_id , department_name FROM `employees` , departments where employees.department_id = departments.department_id; 
+
+
+SELECT employee_id , first_name , departments.department_name FROM `employees` JOIN departments on departments.department_id = employees.department_id; 
+SELECT employee_id , first_name , departments.department_name FROM `employees` INNER JOIN departments on departments.department_id = employees.department_id; 
+
+SELECT employee_id , first_name , departments.department_name FROM `employees` RIGHT JOIN departments on departments.department_id = employees.department_id; 
+SELECT employee_id , first_name , departments.department_name FROM `employees` LEFT JOIN departments on departments.department_id = employees.department_id; 
+
+SELECT employee_id , first_name , departments.department_name FROM `employees` RIGHT JOIN departments on departments.department_id = employees.department_id UNION SELECT employee_id , first_name , departments.department_name FROM `employees` LEFT JOIN departments on departments.department_id = employees.department_id; 

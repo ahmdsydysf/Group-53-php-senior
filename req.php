@@ -30,8 +30,8 @@ if(isset($_POST['username'])){
     // 3- excute
 
     require_once "help.php";
-
-  $stat = "INSERT INTO users (username , password , email)  VALUES  ('$un' , '$pw' , '$em')";
+  $currentTIME = 'SELECT CURRENT_TIMESTAMP';
+  $stat = "INSERT INTO users (username , password , email, created_at)  VALUES  ('$un' , '$pw' , '$em' ,'$currentTIME' )";
 
 
   mysqli_query($connection  ,   $stat);  
