@@ -99,7 +99,12 @@ require_once "help.php";
 
 	          <li class="nav-item"><a href="logout.php" class="nav-link">logout</a></li>
               <?php endif ; ?>
-	          <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+              <?php 
+                  require_once "help.php";
+                  $cart_stat = "select * from cart where user_id = $_SESSION[login_user_id]";
+                  $result = mysqli_query($connection , $cart_stat);
+                ?>
+	          <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span><?= $result->num_rows ?></a></li>
 
 	        </ul>
 	      </div>
@@ -267,11 +272,16 @@ require_once "help.php";
 	    					</div>
 	    					<div class="bottom-area d-flex px-3">
 	    						<div class="m-auto d-flex">
-	    							<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-	    								<span><i class="ion-ios-menu"></i></span>
-	    							</a>
-	    							<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-	    								<span><i class="ion-ios-cart"></i></span>
+                    <form action="addToCart.php" method="post">
+                      <input class="d-none" type="text" name="pi" value="<?= $product['id'] ?>">
+                        <button class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                        <span><i class="ion-ios-cart"></i></span>
+                        </button>
+                    </form>
+	    					
+                      <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                        
+                        <span><i class="ion-ios-menu"></i></span>
 	    							</a>
 	    							<a href="#" class="heart d-flex justify-content-center align-items-center ">
 	    								<span><i class="ion-ios-heart"></i></span>

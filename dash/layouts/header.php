@@ -74,6 +74,7 @@
                     </div>
                     <a href="<?= $ul ?>users/users.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>users</a>
                     <a href="<?= $ul ?>products/products.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>products</a>
+                    <a href="<?= $ul ?>categories/category.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>categories</a>
                     <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
                     <div class="nav-item dropdown">

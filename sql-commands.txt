@@ -52,7 +52,7 @@ SELECT last_name , TRIM(last_name) FROM employees;
 SELECT last_name , TRIM(LEADING FROM last_name) FROM employees; 
 SELECT last_name , TRIM(TRALLING FROM last_name) FROM employees; 
 SELECT last_name , TRIM(BOTH FROM last_name) FROM employees; 
-SELECT last_name , TRIM('@' FROM last_name) FROM employees; only in the start od string
+SELECT last_name , TRIM('@' FROM last_name) FROM employees; only in the start of string
 SELECT salary , ceil(salary) FROM employees; 
 SELECT salary , floor(salary) FROM employees; 
 SELECT salary , round(salary) FROM employees; 

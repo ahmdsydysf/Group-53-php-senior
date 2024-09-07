@@ -2,11 +2,15 @@
 
 $ul = '../';
 
-require_once "../../help.php";
-  // 1-  connect
-  $statment = 'SELECT * FROM products';
-  // 2- statment
-  $query = mysqli_query($connection , $statment);
+// require_once "../../help.php";
+require_once "../helper.php";
+$statment = 'SELECT products.id , products.name , products.price , products.discount , products.image , categories.name AS category_name FROM products left JOIN categories ON categories.id = products.category_id';
+$result = selectData($statment , 'test_gr_53');
+
+// var_dump($result);
+//   // 1-  connect
+//   // 2- statment
+//   $query = mysqli_query($connection , $statment);
 ?>
 
 <?php include "../layouts/header.php" ?>
@@ -21,6 +25,7 @@ require_once "../../help.php";
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Name</th>
+                                            <th scope="col">category</th>
                                           
                                             <th scope="col">price</th>
                                             <th scope="col">image</th>
@@ -30,10 +35,11 @@ require_once "../../help.php";
                                         </tr>
                                     </thead>
                                     <tbody>
-            <?php while($products = mysqli_fetch_assoc($query)) : ?>
+            <?php while($products = mysqli_fetch_assoc($result['data'])) : ?>
                                         <tr>
                                             <th scope="row"><?= $products['id'] ?></th>
                                             <td><?= $products['name'] ?></td>
+                                            <td><?= $products['category_name'] ?></td>
                                             <td><?= $products['price'] ?></td>
                                             <td><img src="uploads/<?= $products['image'] ?>" width="75" height="75" alt="" srcset=""></td>
                                             <td><?= $products['discount'] ?> % </td>

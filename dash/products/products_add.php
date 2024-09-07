@@ -2,40 +2,41 @@
 
 $ul = '../';
 
-require_once "../../help.php";
+require_once "../helper.php";
 
 
 
   if(isset($_POST['price'])){
 
     if($_FILES['image'] && $_FILES['image']['error'] != 4){
-      $file = $_FILES['image'];
-      $file_name = uniqid() . $file['name'];
-      $file_path = $file['tmp_name'];
-      $file_size = $file['size'];
+    //   $file = $_FILES['image'];
+    //   $file_name = uniqid() . $file['name'];
+    //   $file_path = $file['tmp_name'];
+    //   $file_size = $file['size'];
       
-      $allwed_ext =['png', 'jpg','jpeg'];
+    //   $allwed_ext =['png', 'jpg','jpeg'];
       
-      $file_ext = explode('.' ,$file_name);
-      $file_ext_in_array = end($file_ext);
-      $final_ext = strtolower($file_ext_in_array);
+    //   $file_ext = explode('.' ,$file_name);
+    //   $file_ext_in_array = end($file_ext);
+    //   $final_ext = strtolower($file_ext_in_array);
       
-      if(! in_array($final_ext, $allwed_ext)){
-          $all_errors['ext_type'] = "plz make sure file type is png jpg  jpeg";
-      }
+    //   if(! in_array($final_ext, $allwed_ext)){
+    //       $all_errors['ext_type'] = "plz make sure file type is png jpg  jpeg";
+    //   }
       
-      if($file_size > 2097152){
-          $all_errors['file_size']="plz make sure your file size lower than2 mega ";
-      }
+    //   if($file_size > 2097152){
+    //       $all_errors['file_size']="plz make sure your file size lower than2 mega ";
+    //   }
       
-      move_uploaded_file($file_path ,"uploads/" .$file_name);
+    //   move_uploaded_file($file_path ,"uploads/" .$file_name);
+    $file_name = uploadFile($_FILES['image'] , ['png', 'jpg','jpeg']);
     }else{
       $file_name = 'default_product.png';
     }
 
-    $statment = "Insert into products ( name , price , image , discount) values ('$_POST[name]' , '$_POST[price]' , '$file_name' , '$_POST[discount]' )";
-    $query = mysqli_query($connection , $statment);
-
+    $r = insertData("Insert into products ( name , price , image , discount) values ('$_POST[name]' , '$_POST[price]' , '$file_name' , '$_POST[discount]' )" , 'test_gr_53');
+    // $statment = "Insert into products ( name , price , image , discount) values ('$_POST[name]' , '$_POST[price]' , '$file_name' , '$_POST[discount]' )";
+    // $query = mysqli_query($connection , $statment);
     header('location:products.php');
   }
 ?>
