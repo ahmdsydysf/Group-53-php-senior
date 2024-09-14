@@ -116,8 +116,8 @@
                                 <td>  ${snglSTD.email}  </td>
                                 <td>  ${snglSTD.password}  </td>
                                 <td>  
-                                    <button class='btn btn-info'>edit</button>
-                                    <button class='btn btn-danger'>delete</button>
+                                    <button data-std-id='${snglSTD.id}' onclick='edtStd(this)' class='btn btn-info'>edit</button>
+                                    <button data-std-id='${snglSTD.id}' onclick='dltStd(this)' class='btn btn-danger'>delete</button>
                                 </td>
                             </tr>
                         
@@ -131,6 +131,25 @@
             nxhr.send();
         }
         showData();
+
+        function dltStd(btn){
+            let myID = btn.getAttribute('data-std-id');
+            let nxhr = new XMLHttpRequest();
+            nxhr.open('POST' , 'delete.php' , true);
+            nxhr.onload = function (){
+                if(nxhr.status === 200){
+                    document.querySelector('#msg').innerHTML = `
+                        <div class="alert alert-success"> ${nxhr.responseText} </div>
+                    `;
+                    showData();
+                }else{
+                    alert('connection error');
+                }
+            }
+            let studID = {id : myID}
+            let studIDInJson = JSON.stringify(studID);
+            nxhr.send(studIDInJson);
+        }
     </script>
     <script src="js/main.js"></script>
 </body>
