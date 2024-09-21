@@ -22,7 +22,7 @@
                     Add / Update Students
                 </h3>
                 <div>
-                    <!-- <input style="display:none;" type="text" class="form-control" id="stuid"> -->
+                    <input style="display:none;" value="" type="text" class="form-control" id="stuid">
                     <label for="nameid" class="form-label">name</label>
                     <input type="text" class="form-control" id="nameid">
                 </div>
@@ -69,11 +69,13 @@
 
         function add_student(e){
             e.preventDefault();
+            let id = document.querySelector('#stuid');
             let nm =document.querySelector('#nameid').value;
             let em =document.querySelector('#emailid').value;
             let pw =document.querySelector('#passwordid').value;
 
             let formData = {
+                id : id.value,
                 name : nm,
                 email : em,
                 pass : pw,
@@ -88,12 +90,13 @@
                 if(nxhr.status === 200){
                     nxhr.responseText
                     console.log(nxhr.responseText);
+                    showData();
+                    id.value = null;
                 }else{
                     console.log('plz try again');
                 }
             }
             nxhr.send(formDataInJson );
-            showData();
             document.querySelector('form').reset();
         }
 
@@ -149,6 +152,37 @@
             let studID = {id : myID}
             let studIDInJson = JSON.stringify(studID);
             nxhr.send(studIDInJson);
+        }
+
+        function edtStd(btn){
+            let stID = btn.getAttribute('data-std-id');
+
+            let stdInputID = document.querySelector('#stuid');
+            let nm =document.querySelector('#nameid');
+            let em =document.querySelector('#emailid');
+            let pw =document.querySelector('#passwordid');
+
+            let nxhr = new XMLHttpRequest();
+            nxhr.open('POST' , 'edit.php?id=' + stID , true);
+            nxhr.onload = function(){
+                if(nxhr.status === 200){
+                    console.log(nxhr.responseText);
+                    let myData = JSON.parse(nxhr.responseText);
+                    stdInputID.style.display = 'block';
+                    stdInputID.value = myData.id;
+                    nm.value = myData.name;
+                    em.value = myData.email;
+                    pw.value = myData.password;
+                    stdInputID.style.display = 'none';
+
+                }else{
+                    alert('connection error');
+                }
+            }
+
+            let stData = {id : stID};
+            let  stDataInJson = JSON.stringify(stData);
+            nxhr.send(stDataInJson);
         }
     </script>
     <script src="js/main.js"></script>
